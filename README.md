@@ -1,311 +1,338 @@
-# 🚀 CryptoPulse Pro - Advanced AI Trading Platform
+# 🚀 Quantum State Visualizer
 
-<div align="center">
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-![Flask](https://img.shields.io/badge/flask-2.0+-red.svg)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0+-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
-**CryptoPulse Pro is an AI-powered cryptocurrency prediction platform that uses LSTM and XGBoost models with real-time market data and professional analysis tools.**
-
-</div>
+An interactive **quantum circuit simulator and state visualization tool** built with **PyQt6, Qiskit, and QuTiP**.  
+It allows users to design quantum circuits, visualize quantum states on the **Bloch Sphere**, and analyze **entanglement and probabilities in real time**.
 
 ---
 
 # ✨ Features
 
-## 🤖 AI Predictions
-- LSTM Neural Network models
-- XGBoost prediction models
-- Multi-timeframe predictions
-- Confidence score for predictions
+## 🎯 Interactive Quantum Circuit Design
+- Build quantum circuits with a graphical interface
+- Single-qubit gates:
+  - X
+  - Y
+  - Z
+  - H
+  - S
+  - T
+- Two-qubit **CNOT gate**
+- Parametric rotation gates:
+  - RX
+  - RY
+  - RZ
+- Real-time circuit diagram updates
 
-## 📊 Live Market Data
-- Real-time crypto prices
-- CoinGecko API integration
-- Market trend analysis
+---
 
-## 📈 Interactive Analysis
-- Price charts
-- Multi-coin comparison
-- Historical data visualization
+## 🌐 3D Bloch Sphere Visualization
+- Multiple Bloch spheres (up to **5 qubits**)
+- Real-time **state vector visualization**
+- Interactive **3D rotation and zoom**
+- Color-coded axes
+  - X → Red
+  - Y → Green
+  - Z → Blue
+- Semi-transparent spheres with state vectors
 
-## ❤️ Watchlist
-- Track favorite coins
-- Quick prediction access
-- Personalized dashboard
+---
 
-## 🎨 Modern UI
-- Dark / Light theme
-- Responsive design
-- Glass morphism UI effects
+## 📊 Analysis Tools
+- **Measurement Probabilities**  
+  Bar chart of all basis states
 
-## 🔒 Security
-- Secure login authentication
-- Password hashing
-- Flask session management
+- **Entanglement Analysis**  
+  Von Neumann entropy calculation
+
+- **State Vector Display**  
+  Full quantum state representation
+
+- **Bloch Coordinates**  
+  Real-time (x, y, z) coordinates for each qubit
+
+---
+
+## 🎮 Pre-built Circuit Examples
+- Bell State |Φ⁺⟩
+- GHZ State
+- Superposition |+⟩
+- Random circuit generator
+
+---
+
+## 💾 File Operations
+- Import circuits in **OpenQASM format**
+- Export circuits
+- Save / load configurations
+- Example circuits included
 
 ---
 
 # 🛠 Tech Stack
 
-Backend  
-- Python  
-- Flask  
+### Quantum Computing
+- Qiskit
+- QuTiP
 
-Machine Learning  
-- TensorFlow  
-- Keras  
-- XGBoost  
-- Scikit-learn  
+### GUI
+- PyQt6
 
-Data Processing  
-- Pandas  
-- NumPy  
+### Visualization
+- PyQtGraph
+- Matplotlib
+- OpenGL
 
-Frontend  
-- HTML  
-- CSS  
-- JavaScript  
-- Chart.js  
-
-API  
-- CoinGecko Cryptocurrency API  
+### Scientific Libraries
+- NumPy
 
 ---
 
 # 📁 Project Structure
 
 ```
-cryptopulse-pro/
+quantum-state-visualizer/
 
-app.py
-README.md
+src/
+   core/
+      quantum_engine.py
+
+   gui/
+      bloch_widget.py
+      circuit_widget.py
+      controls_panel.py
+      main_window.py
+
+   visualization/
+      plots.py
+
+   utils/
+      helpers.py
+
+assets/
+   icons/
+   demo.gif
+
+examples/
+   bell_state.qasm
+   ghz_state.qasm
+   superposition.qasm
+
+tests/
+   test_circuits.py
+
+docs/
+   user_guide.md
+
+main.py
+create_project.py
 requirements.txt
-
-backend/
-   models/
-      BTC_lstm_hourly.h5
-      BTC_xgb_hourly.pkl
-      BTC_scaler_hourly.pkl
-
-templates/
-   index.html
-   login.html
-   dashboard.html
-
-static/
-   css/
-   js/
-   images/
-
-cryptopulse_pro.db
 ```
 
 ---
 
-# 🚀 Installation & Running the Project
+# 🚀 Installation & Setup
 
 ## 1 Clone the Repository
 
 ```
-git clone https://github.com/yourusername/cryptopulse-pro.git
-cd cryptopulse-pro
+git clone https://github.com/yourusername/quantum-state-visualizer.git
+cd quantum-state-visualizer
 ```
 
-## 2 Create Virtual Environment
+---
 
-Windows
-
-```
-python -m venv venv
-venv\Scripts\activate
-```
-
-Mac / Linux
+## 2 Install Dependencies
 
 ```
-python3 -m venv venv
-source venv/bin/activate
+pip install PyQt6 numpy matplotlib pyqtgraph qiskit qutip PyOpenGL
 ```
 
-## 3 Install Dependencies
+Or install using requirements file
 
 ```
 pip install -r requirements.txt
 ```
 
-## 4 Create Models Folder
+---
+
+## 3 Run the Application
 
 ```
-mkdir backend/models
+python main.py
 ```
 
-Place trained models inside:
+The GUI application will launch.
+
+---
+
+# 🎮 Usage Guide
+
+## Basic Operations
+
+### Set Number of Qubits
+Use the **spinner in Circuit Settings** to select **1–5 qubits**.
+
+### Add Single-Qubit Gates
+Select target qubit and click:
 
 ```
-BTC_lstm_hourly.h5
-BTC_xgb_hourly.pkl
-BTC_scaler_hourly.pkl
+X
+Y
+Z
+H
+S
+T
 ```
 
-## 5 Run the Application
+### Add CNOT Gate
+
+Select
 
 ```
-python app.py
+Control Qubit
+Target Qubit
 ```
 
-Open browser
+Then click **CNOT**.
+
+### Rotation Gates
+
+Adjust angle slider and apply
 
 ```
-http://localhost:5000
+RX
+RY
+RZ
+```
+
+### Reset Circuit
+
+Click **Reset Circuit** to clear all gates.
+
+---
+
+# 🧪 Example Circuits
+
+## Bell State |Φ⁺⟩
+
+```
+H q0
+CNOT q0 q1
+```
+
+Creates entangled state:
+
+```
+(|00⟩ + |11⟩) / √2
 ```
 
 ---
 
-# 🎮 Usage
-
-Create an account using `/signup`.
-
-From the dashboard you can:
-
-- View live cryptocurrency prices
-- Generate AI predictions
-- Analyze price charts
-- Add coins to watchlist
-- View prediction history
-- Customize profile settings
-
----
-
-# 🔌 API Endpoints
-
-| Endpoint | Method | Description |
-|--------|--------|-------------|
-| /api/prices | GET | Get live crypto prices |
-| /api/predict | POST | Generate AI prediction |
-| /api/analyze | POST | Generate analysis data |
-| /api/wishlist | GET | Get watchlist |
-| /api/wishlist | POST | Add/remove watchlist |
-| /api/profile | POST | Update user profile |
-
-Example API request:
+## GHZ State
 
 ```
-import requests
+H q0
+CNOT q0 q1
+CNOT q0 q2
+```
 
-response = requests.post(
- "http://localhost:5000/api/predict",
- json={
-  "coin_symbol":"BTC",
-  "prediction_type":"hourly",
-  "timeframe":"6"
- }
-)
+Creates state:
 
-print(response.json())
+```
+(|000⟩ + |111⟩) / √2
 ```
 
 ---
 
-# 🤖 AI Models
-
-Supported models
-
-- LSTM (.h5)
-- XGBoost (.pkl)
-- Scaler (.pkl)
-
-Naming format
+## Superposition |+⟩
 
 ```
-COIN_MODELTYPE_TIMEFRAME.extension
+H q0
 ```
 
-Example
+Creates
 
 ```
-BTC_lstm_hourly.h5
-ETH_xgb_daily.pkl
-SOL_scaler_hourly.pkl
+(|0⟩ + |1⟩) / √2
 ```
 
 ---
 
-# ⚙️ Configuration
+# 📊 Visualization Features
 
-Inside `app.py`
+### Bloch Sphere
+- Rotate with mouse drag
+- Zoom with scroll wheel
+
+### Circuit Diagram
+- Updates automatically when gates are added
+
+### Probability Plot
+Displays measurement probabilities.
+
+### Entropy Plot
+Shows entanglement between qubits.
+
+### Info Panel
+Displays:
+- State vector
+- Bloch coordinates
+- Measurement statistics
+
+---
+
+# ⚙️ Technical Details
+
+## Quantum Engine
+
+The simulation backend uses:
+
+- **Qiskit** for circuit simulation
+- **QuTiP** for advanced quantum operations
+
+Capabilities:
+
+- State vector simulation
+- Density matrix calculations
+- Entanglement entropy
+- Bloch vector extraction
+
+---
+
+# Supported Gates
+
+| Gate | Type | Description |
+|-----|------|-------------|
+| X | Single | Pauli-X |
+| Y | Single | Pauli-Y |
+| Z | Single | Pauli-Z |
+| H | Single | Hadamard |
+| S | Single | Phase gate |
+| T | Single | π/4 phase gate |
+| CNOT | Two | Controlled-NOT |
+| RX | Parametric | X rotation |
+| RY | Parametric | Y rotation |
+| RZ | Parametric | Z rotation |
+
+---
+
+# 📦 Requirements
 
 ```
-DATABASE = "cryptopulse_pro.db"
-MODELS_DIR = "backend/models"
-USD_TO_INR_RATE = 83.40
-```
-
-Supported coins
-
-```
-SUPPORTED_COINS = {
- "BTC":{"name":"Bitcoin","gecko_id":"bitcoin"},
- "ETH":{"name":"Ethereum","gecko_id":"ethereum"},
- "BNB":{"name":"Binance Coin","gecko_id":"binancecoin"},
- "ADA":{"name":"Cardano","gecko_id":"cardano"},
- "SOL":{"name":"Solana","gecko_id":"solana"},
- "XRP":{"name":"Ripple","gecko_id":"ripple"},
- "LTC":{"name":"Litecoin","gecko_id":"litecoin"}
-}
+PyQt6>=6.4.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+pyqtgraph>=0.13.0
+qiskit>=0.43.0
+qutip>=4.7.0
+PyOpenGL>=3.1.6
 ```
 
 ---
 
-# 🛠 Troubleshooting
+# 📤 Push Project to GitHub
 
-Models not loading
-
-- Ensure models are inside `backend/models/`
-- Check naming format
-- Verify TensorFlow installation
-
-API rate limits
-
-CoinGecko free API
-
-```
-30 requests per minute
-```
-
-Database reset
-
-```
-delete cryptopulse_pro.db
-```
-
----
-
-# 📊 Performance
-
-Prediction accuracy: **85-95%**
-
-API response time: **<500ms**
-
-Page load time: **<2 seconds**
-
----
-
-# 🔒 Security
-
-- Password hashing with Werkzeug
-- Session authentication
-- SQL injection protection
-- XSS protection
-
----
-
-# 📤 How to Push This Project to GitHub
-
-Initialize git
+Initialize Git
 
 ```
 git init
@@ -323,13 +350,13 @@ Commit
 git commit -m "Initial commit"
 ```
 
-Connect GitHub repo
+Connect GitHub repository
 
 ```
-git remote add origin https://github.com/yourusername/cryptopulse-pro.git
+git remote add origin https://github.com/yourusername/quantum-state-visualizer.git
 ```
 
-Push project
+Push code
 
 ```
 git branch -M main
@@ -340,47 +367,71 @@ git push -u origin main
 
 # 🤝 Contributing
 
-Fork the repository
+1 Fork the repository  
 
-Create branch
+2 Create feature branch
 
 ```
 git checkout -b feature/new-feature
 ```
 
-Commit
+3 Commit changes
 
 ```
 git commit -m "Add new feature"
 ```
 
-Push
+4 Push branch
 
 ```
 git push origin feature/new-feature
 ```
 
-Open Pull Request
+5 Open Pull Request
 
 ---
 
 # 📝 License
 
-MIT License
+This project is licensed under the **MIT License**.
 
 ---
 
 # 🙏 Acknowledgments
 
-CoinGecko API  
-TensorFlow  
-XGBoost  
-Chart.js  
+- Qiskit — IBM quantum computing framework  
+- QuTiP — Quantum toolbox for Python  
+- PyQtGraph — High-performance visualization  
+- PyQt6 — GUI framework  
+
+---
+
+# 🛣 Roadmap
+
+Future improvements:
+
+- Add more gates (Toffoli, SWAP)
+- Quantum noise simulation
+- Measurement simulation
+- Custom gate support
+- Export visualizations as images
+- Quantum algorithm templates
+- Real quantum hardware backend support
+
+---
+
+# 📧 Support
+
+If you encounter issues:
+
+- Open a **GitHub Issue**
+- Review example circuits in `examples/`
+- Check documentation in `docs/`
 
 ---
 
 <div align="center">
 
-Made with ❤️ using AI & Machine Learning
+🚀 Happy Quantum Computing!
 
 </div>
